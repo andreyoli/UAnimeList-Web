@@ -6,7 +6,8 @@ const theme = {
     subtitle: '#808080',
     primary: '#8BE9FD',
     secondary: '#35449C',
-    accent: '#FF5555'
+    accent: '#FF5555',
+    shadow: '#1A1A1A'
   },
   fonts: "'Roboto', sans-serif",
   fontSizes: {

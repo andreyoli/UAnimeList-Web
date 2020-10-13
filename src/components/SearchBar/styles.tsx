@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {lighten} from 'polished';
+import {lighten, opacify} from 'polished';
 import {IoIosSearch} from 'react-icons/io'
 
 export const SearchIcon = styled(IoIosSearch)`
@@ -14,10 +14,11 @@ export const Container = styled.div`
 
   @media only screen and (max-width : 780px) {
     //display: none;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 80%;
     margin: 0 0 20px 20px;
+    filter: drop-shadow(4px 4px 8px ${props => opacify(0.9, props.theme.colors.shadow)});
   }
 `;
 
@@ -29,7 +30,7 @@ export const Input = styled.input`
   outline: none;
   color:  ${props => props.theme.colors.textLight};
   border: none;
-  background: ${props => lighten(0.1, props.theme.colors.background)};
+  background: ${props => lighten(0.05, props.theme.colors.background)};
   ::placeholder{
     font-size: ${props => props.theme.fontSizes.text};
     color: ${props => props.theme.colors.subtitle};
