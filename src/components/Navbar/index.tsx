@@ -1,8 +1,8 @@
-import React from 'react';
-import LoginButton from '../LoginButton';
-import SearchBar from '../SearchBar';
+import React from 'react'
+import LoginButton from '../LoginButton'
+import SearchBar from '../SearchBar'
 
-import { Nav, H3 } from './styles';
+import { Nav, H3 } from './styles'
 
 const Navbar: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
       <SearchBar />
       <LoginButton />
     </Nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

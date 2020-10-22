@@ -1,43 +1,40 @@
 import { NextPage } from 'next'
 import React from 'react'
+import ViewMore from '../ViewMore'
+import AnimeCard from '../AnimeCard'
+
+import { Container, TitleContainer, AnimeList, H3, ListIcon } from './styles'
 import { IData } from '../../utils/graphqlQueries'
 
-import AnimeCard from '../AnimeCard'
-import ViewMore from '../ViewMore'
-import {
-  Container,
-  TitleContainer,
-  FireIcon,
-  H2,
-  AnimesContainer
-} from './styles'
-
-interface ITrending {
+interface IAllAnimes {
   animeData: IData
 }
 
-const Trending: NextPage<ITrending> = ({ animeData }) => {
+const AllAnimes: NextPage<IAllAnimes> = ({ animeData }) => {
   const animes = animeData.Page.media
 
   return (
     <Container>
       <TitleContainer>
-        <FireIcon size="3.5rem" title="Flame icon" />
-        <H2>Trending This Season</H2>
+        <H3>
+          <ListIcon size="2.3rem" title="List icon" />
+          ALL ANIMES
+        </H3>
+        <ViewMore />
       </TitleContainer>
-      <AnimesContainer>
+      <AnimeList>
         {animes.map(anime => (
           <AnimeCard
+            className="small"
             imageLink={anime.coverImage.extraLarge || anime.coverImage.color}
             AnimeName={anime.title.romaji}
             pagePath={anime.id}
             key={anime.id}
           />
         ))}
-      </AnimesContainer>
-      <ViewMore />
+      </AnimeList>
     </Container>
   )
 }
 
-export default Trending
+export default AllAnimes

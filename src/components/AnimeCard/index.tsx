@@ -1,14 +1,26 @@
-import React from 'react';
+import { NextPage } from 'next'
+import Link from 'next/link'
+import React from 'react'
+import { Container, AnimeImage, AnimeName } from './styles'
 
-import { Container, AnimeImage, AnimeName } from './styles';
-
-const AnimeCard: React.FC = () => {
-  return(
-    <Container>
-      <AnimeImage src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx20-KCjCtnUTsLcu.jpg" />
-      <AnimeName>Naruto</AnimeName>
-    </Container>
-  );
+interface IAnimeCard {
+  className?: string
+  imageLink: string
+  AnimeName: string
+  pagePath?: number
 }
 
-export default AnimeCard;
+const AnimeCard: NextPage<IAnimeCard> = props => {
+  const animePath = `/anime/${props.pagePath}`
+
+  return (
+    <Link href={animePath}>
+      <Container>
+        <AnimeImage src={props.imageLink} className={props.className} />
+        <AnimeName title={props.AnimeName}>{props.AnimeName}</AnimeName>
+      </Container>
+    </Link>
+  )
+}
+
+export default AnimeCard

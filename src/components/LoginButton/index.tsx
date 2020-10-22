@@ -1,13 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-import { Button, Person } from './styles';
+import { Button, Person } from './styles'
 
 const LoginButton: React.FC = () => {
   return (
     <>
-      <Button><Person size="20px" />Login</Button>
+      <Button>
+        <Person size="20px" />
+        Login
+      </Button>
     </>
-  );
+  )
 }
 
-export default LoginButton;
+export default LoginButton

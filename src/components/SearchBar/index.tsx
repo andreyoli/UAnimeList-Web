@@ -1,14 +1,23 @@
-import React from 'react';
+import React from 'react'
+import Input from '../Input'
 
-import { Button, Container, Input, SearchIcon } from './styles';
+import { Button, Container, SearchIcon, FormStyled } from './styles'
 
 const SearchBar: React.FC = () => {
+  function handleSubmit(data) {
+    // search animes
+  }
+
   return (
-    <Container>
-      <Input type="search" placeholder="Search anime or manga name" />
-      <Button><SearchIcon size="25px" /></Button>
-    </Container>
-  );
+    <FormStyled onSubmit={handleSubmit}>
+      <Container>
+        <Input name="search" />
+        <Button type="submit">
+          <SearchIcon size="25px" />
+        </Button>
+      </Container>
+    </FormStyled>
+  )
 }
 
-export default SearchBar;
+export default SearchBar

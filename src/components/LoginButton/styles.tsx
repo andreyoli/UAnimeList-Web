@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import {BsFillPersonFill} from 'react-icons/bs'
+import styled from 'styled-components'
+import { BsFillPersonFill } from 'react-icons/bs'
 
 export const Button = styled.button`
   min-width: 100px;
@@ -15,7 +15,7 @@ export const Button = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   padding: 5px;
-`;
+`
 
 export const Person = styled(BsFillPersonFill)`
   color: ${props => props.theme.colors.primary};
