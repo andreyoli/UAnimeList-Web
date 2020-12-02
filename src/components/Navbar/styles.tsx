@@ -10,4 +10,7 @@ export const Nav = styled.nav`
 export const H3 = styled.h3`
   color: var(--color-primary);
   font-weight: bold;
+  :hover {
+    cursor: pointer;
+  }
 `

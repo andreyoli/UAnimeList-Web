@@ -28,7 +28,7 @@ export default createGlobalStyle`
     color: ${props => props.theme.colors.textLight};
     font-family: ${props => props.theme.fonts};
     font-size: 1rem;
-    margin: 40px 76px;
+    margin: 30px 176px;
   }
 
   @media only screen and (max-width : 780px) {

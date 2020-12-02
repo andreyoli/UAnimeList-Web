@@ -12,6 +12,7 @@ const theme = {
   fonts: "'Roboto', sans-serif",
   fontSizes: {
     text: '1rem',
+    subtitle: '1.3rem',
     textButton: '1.15rem',
     titleSmall: '1.7rem',
     titleMedium: '2.5rem',
