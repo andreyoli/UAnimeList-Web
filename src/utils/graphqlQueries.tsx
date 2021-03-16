@@ -78,7 +78,7 @@ export const AllAnimesQuery = async (nPerPage: number): Promise<IData> => {
   return data
 }
 
-export const AnimePageQuery = async (animeId: string[]): Promise<T> => {
+export const AnimePageQuery = async (animeId: string): Promise<any> => {
   const variables = {
     id: animeId
   }

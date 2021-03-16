@@ -103,8 +103,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async context => {
-  const { animeId } = context.params
-  const animeData = await AnimePageQuery(animeId)
+  const data: string = String(context.params.animeId)
+  const animeData = await AnimePageQuery(data)
 
   return {
     props: {
