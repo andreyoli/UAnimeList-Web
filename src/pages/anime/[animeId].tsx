@@ -20,7 +20,7 @@ import {
   TagContainer,
   LineTitle,
   InfoContainer
-} from './styles'
+} from '../../styles/pages/anime/styles'
 import AnimeScore from '../../components/AnimeScore'
 import Tag from '../../components/Tag'
 
