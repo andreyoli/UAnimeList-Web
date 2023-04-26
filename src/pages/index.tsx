@@ -26,7 +26,7 @@ const Home: React.FC = ({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const trendingData = await TrendingQuery(3)
+  const trendingData = await TrendingQuery(4)
   const allAnimesData = await AllAnimesQuery(30)
 
   return {

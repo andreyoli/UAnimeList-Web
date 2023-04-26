@@ -1,6 +1,28 @@
 import api from '../services/api'
 import selectCurrentSeason from '../utils/selectCurrentSeason'
 
+export interface IAiringMedia {
+  media: {
+    id: number
+    title: {
+      romaji: string
+    }
+    coverImage: {
+      large: string
+    }
+    mediaListEntry: {
+      progress: number
+    }
+    episodes: number
+  }
+  episode: number
+  airingAt: number
+}
+
+export interface IAiringSchedules {
+  airingSchedules: [IAiringMedia]
+}
+
 export interface IData {
   Page: {
     media: [
@@ -194,5 +216,54 @@ export const AnimePageQuery = async (animeId: string): Promise<any> => {
   })
 
   const data = res.data.data
+  return data
+}
+
+export const GetTodaySchedule = async (
+  mediaIdList: number[]
+): Promise<IAiringSchedules> => {
+  const event = new Date()
+  event.setHours(0, 0, 0, 0)
+
+  const todayEpoch = event.getTime() / 1000.0
+  event.setDate(event.getDate() + 7)
+  const tomorrowEpoch = event.getTime() / 1000.0
+
+  const variables = {
+    mediaIdList,
+    todayEpoch,
+    tomorrowEpoch
+  }
+
+  const res = await api.post('/', {
+    query: `#graphql
+      query($mediaIdList: [Int], $todayEpoch: Int, $tomorrowEpoch: Int) {
+        Page(perPage: 100) {
+            pageInfo {
+                hasNextPage
+            }
+            airingSchedules(sort: TIME, airingAt_greater: $todayEpoch, airingAt_lesser: $tomorrowEpoch, mediaId_in: $mediaIdList) {
+                media {
+                    id
+                    title {
+                        romaji
+                    }
+                    coverImage {
+                        large
+                    }
+                    mediaListEntry {
+                        progress
+                    }   
+                    episodes
+                }
+                episode
+                airingAt
+            }
+        }
+      }`,
+    variables
+  })
+
+  const data = res.data.data.Page.airingSchedules
   return data
 }

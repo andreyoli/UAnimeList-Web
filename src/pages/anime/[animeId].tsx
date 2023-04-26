@@ -1,10 +1,10 @@
 import React from 'react'
-import Error from 'next/error'
 
 import { useRouter } from 'next/router'
 import Navbar from '../../components/Navbar'
 import { AnimePageQuery } from '../../utils/graphqlQueries'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import Error from 'next/error'
 import Head from 'next/head'
 
 import {
@@ -31,7 +31,6 @@ const anime: React.FC = ({
   if (isFallback) {
     return <p>Carregando...</p>
   }
-  // return <Error statusCode={404} />
 
   const animeInfo = animeData.Page.media[0]
 
@@ -103,7 +102,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async context => {
-  const data: string = String(context.params.animeId)
+  const data = String(context.params.animeId)
   const animeData = await AnimePageQuery(data)
 
   return {
